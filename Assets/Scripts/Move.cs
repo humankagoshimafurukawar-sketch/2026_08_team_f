@@ -26,7 +26,8 @@ public class Move : MonoBehaviour
             if (UnityEngine.InputSystem.Keyboard.current.wKey.isPressed || UnityEngine.InputSystem.Keyboard.current.upArrowKey.isPressed) v += 1f;
             if (UnityEngine.InputSystem.Keyboard.current.sKey.isPressed || UnityEngine.InputSystem.Keyboard.current.downArrowKey.isPressed) v -= 1f;
 
-            Debug.Log("OK");
+
+            
         }
     }
 }
