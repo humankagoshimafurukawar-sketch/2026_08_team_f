@@ -149,10 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
   BGScroll: {fileID: 156580350}
-  forward: 0
-  back: 0
-  accel: 100
-  brake: 50
+  forward_or_back: 0
+  accel: 10
+  brake: 30
 --- !u!4 &79649654
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
+  CarController: {fileID: 79649653}
   now_Speed: 0
+  max_Speed: 120
+  engine_brake: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

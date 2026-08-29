@@ -50,7 +50,7 @@ public class CarController : MonoBehaviour
         // ブレーキ  押し続けると減速
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.enterKey.isPressed)
+            if (Keyboard.current.enterKey.isPressed && BGScroll.now_Speed > 0)
             {
                 BGScroll.now_Speed -= brake;
             }
