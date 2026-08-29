@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class BGScroll : MonoBehaviour
@@ -6,8 +7,8 @@ public class BGScroll : MonoBehaviour
     [SerializeField] CarController CarController;
 
     [SerializeField] float bg_Size_y = 720;
-    [SerializeField] const float up_Goal_Pos = 720;
-    [SerializeField] const float down_Goal_Pos = -720;
+    [SerializeField] float up_Goal_Pos = 720;
+    [SerializeField] float down_Goal_Pos = -720;
 
     public float now_Speed = 0;
 
@@ -29,17 +30,27 @@ public class BGScroll : MonoBehaviour
         // 背景をスクロール  CarControllerのforward_or_backで進行方向を制御
         transform.Translate(0, now_Speed * CarController.forward_or_back, 0);
 
-        // ボタン操作がなかったら自動で減速
-        if(now_Speed > 0 && CarController.forward_or_back == 0)
-        {
-            now_Speed -= engine_brake;
-        }
+        // 速度が0を下回ったら強制的に0にする
+        if (now_Speed < 0) { now_Speed = 0; }
+
+        // 自動減速
+        Enginebrake();
 
         // 速度上限
         SpeedLimiter();
 
         // 背景スクロールの動きを作る
         BGPositionBack();
+    }
+
+    // ======================================================================================================================
+    // ボタン操作がなかったら自動で減速
+    void Enginebrake()
+    {
+        if (now_Speed > 0 && !CarController.isOperat)
+        {
+            now_Speed -= engine_brake;
+        }
     }
 
     // ======================================================================================================================
