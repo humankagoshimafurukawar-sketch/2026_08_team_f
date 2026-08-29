@@ -42,6 +42,8 @@ public class CarController : MonoBehaviour
             }
         }
 
+        Debug.Log(isOperat);
+
         // アクセル  一回押すごとに加速
         if (Keyboard.current != null)
         {

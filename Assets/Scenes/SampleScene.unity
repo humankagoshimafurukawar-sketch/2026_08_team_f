@@ -150,8 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarController
   BGScroll: {fileID: 156580350}
   forward_or_back: 0
+  isOperat: 0
   accel: 10
-  brake: 1
+  brake: 0.5
 --- !u!4 &79649654
 Transform:
   m_ObjectHideFlags: 0

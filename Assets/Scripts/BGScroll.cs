@@ -49,6 +49,7 @@ public class BGScroll : MonoBehaviour
     {
         if (now_Speed > 0 && !CarController.isOperat)
         {
+            Debug.Log("エンジンブレーーーキ");
             now_Speed -= engine_brake;
         }
     }
