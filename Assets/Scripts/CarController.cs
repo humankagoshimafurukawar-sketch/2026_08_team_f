@@ -3,7 +3,9 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    public BGScroll BGScroll;
+    public BGScroll BGScroll_Up;
+    public BGScroll BGScroll_Center;
+    public BGScroll BGScroll_Down;
 
     // 前後判断用
     public int forward_or_back = 0;
@@ -44,21 +46,23 @@ public class CarController : MonoBehaviour
         }
         
 
-        // アクセル  一回押すごとに加速
+        // アクセル  前後どちらかのキーを押しながら、スペースキーを一回押すごとに加速
         if (Keyboard.current != null)
         {
             if (isOperat && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                BGScroll.now_Speed += accel;
+                BGScroll_Center.now_Speed += accel;
+                BGScroll_Up.now_Speed = BGScroll_Down.now_Speed = BGScroll_Center.now_Speed;
             }
         }
 
         // ブレーキ  押し続けると減速
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.enterKey.isPressed && BGScroll.now_Speed > 0)
+            if (Keyboard.current.enterKey.isPressed && BGScroll_Center.now_Speed > 0)
             {
-                BGScroll.now_Speed -= brake;
+                BGScroll_Center.now_Speed -= brake;
+                BGScroll_Up.now_Speed = BGScroll_Down.now_Speed = BGScroll_Center.now_Speed;
             }
         }
     }
