@@ -8,6 +8,7 @@ public class CarController : MonoBehaviour
     // 前後判断用
     public int forward_or_back = 0;
 
+    // 前後ボタン操作の有無を判断
     public bool isOperat = false;
 
     // アクセルとブレーキ
@@ -28,26 +29,25 @@ public class CarController : MonoBehaviour
         {
             if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
             {
+                isOperat = true; 
                 forward_or_back = -1;
-                isOperat = true;
             }
             else if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
             {
-                forward_or_back = 1;
                 isOperat = true;
+                forward_or_back = 1;
             }
             else
             {
                 isOperat = false;
             }
         }
-
-        Debug.Log(isOperat);
+        
 
         // アクセル  一回押すごとに加速
         if (Keyboard.current != null)
         {
-            if (isOperat = true && Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (isOperat && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 BGScroll.now_Speed += accel;
             }
