@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class BGScroll : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class BGScroll : MonoBehaviour
     [SerializeField] float max_Speed = 120;
 
     // 自動減速
-    [SerializeField] float engine_brake = 10;
+    [SerializeField] float engine_brake = 0.1f;
 
     // ======================================================================================================================
     void Start()
@@ -27,42 +25,27 @@ public class BGScroll : MonoBehaviour
     // ======================================================================================================================
     void Update()
     {
-        // 背景をスクロール  CarControllerのforward_or_backで進行方向を制御
-        transform.Translate(0, now_Speed * CarController.forward_or_back, 0);
+        // 背景スクロールの動き
+        BGPosition();
 
-        // 速度が0を下回ったら強制的に0にする
-        if (now_Speed < 0) { now_Speed = 0; }
+        // アクセル時のスピード増加
+        Accel();
+
+        // ブレーキ時のスピード減少
+        Brake();
+
+        // 速度修正
+        SpeedLimiter();
 
         // 自動減速
         Enginebrake();
 
-        // 速度上限
-        SpeedLimiter();
-
-        // 背景スクロールの動きを作る
-        BGPositionBack();
-    }
-
-    // ======================================================================================================================
-    // ボタン操作がなかったら自動で減速
-    void Enginebrake()
-    {
-        if (now_Speed > 0 && !CarController.isOperat)
-        {
-            Debug.Log("エンジンブレーーーキ");
-            now_Speed -= engine_brake;
-        }
-    }
-
-    // ======================================================================================================================
-    // 出せる速度の上限を超えたら、強制的に上限にそろえる
-    void SpeedLimiter()
-    {
-        if(now_Speed > max_Speed) { now_Speed = max_Speed; }
+        // 背景を移動
+        MoveBG();
     }
 
     //======================================================================================================================
-    void BGPositionBack()
+    void BGPosition()
     {
         // 使用する画像の枚数
         const int bg_Number = 3;
@@ -78,5 +61,50 @@ public class BGScroll : MonoBehaviour
         {
             transform.Translate(0, bg_Size_y * bg_Number, 0);
         }
+    }
+
+    // ======================================================================================================================
+    // アクセル
+    void Accel()
+    {
+        if (CarController.isAccel)
+        {
+            now_Speed += CarController.accel;
+        }
+    }
+
+    // ブレーキ
+    void Brake()
+    {
+        if (CarController.isBrake && now_Speed > 0)
+        {
+            now_Speed -= CarController.brake;
+        }
+    }
+
+    // ======================================================================================================================
+    // 速度が最高速度を超えたり0を下回ったりしないよう修正
+    void SpeedLimiter()
+    {
+        if (now_Speed > max_Speed) { now_Speed = max_Speed; }
+
+        if (now_Speed < 0) { now_Speed = 0; }
+    }
+
+    // ======================================================================================================================
+    // ボタン操作がなかったら自動で減速
+    void Enginebrake()
+    {
+        if (now_Speed > 0 && !CarController.isOperat)
+        {
+            now_Speed -= engine_brake;
+        }
+    }
+
+    // ======================================================================================================================
+    // 背景を上下に動かす
+    void MoveBG()
+    {
+        transform.Translate(0, now_Speed * CarController.forward_or_back, 0);
     }
 }
