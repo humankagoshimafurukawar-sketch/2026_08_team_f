@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesManager
   ObstaclesOBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
-  instantiate_Time: 5
+  instantiate_Time: 3
 --- !u!4 &402241924
 Transform:
   m_ObjectHideFlags: 0
