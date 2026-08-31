@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // 画面の横のサイズ
+    public float screen_Size_x = 1280;
+
+    //======================================================================================================================
     void Start()
     {
         Application.targetFrameRate = 60;
-
     }
 
-    // Update is called once per frame
+    //======================================================================================================================
     void Update()
     {
         

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BGScroll : MonoBehaviour
 {
-    [SerializeField] CarController CarController;
+    [SerializeField] CarController carController;
 
     [SerializeField] float bg_Size_y = 720;
     [SerializeField] float up_Goal_Pos = 720;
@@ -16,13 +16,13 @@ public class BGScroll : MonoBehaviour
     // 自動減速
     [SerializeField] float engine_brake = 0.1f;
 
-    // ======================================================================================================================
+    //======================================================================================================================
     void Start()
     {
         
     }
 
-    // ======================================================================================================================
+    //======================================================================================================================
     void Update()
     {
         // 背景スクロールの動き
@@ -63,26 +63,26 @@ public class BGScroll : MonoBehaviour
         }
     }
 
-    // ======================================================================================================================
+    //======================================================================================================================
     // アクセル
     void Accel()
     {
-        if (CarController.isAccel)
+        if (carController.isAccel)
         {
-            now_Speed += CarController.accel;
+            now_Speed += carController.accel;
         }
     }
 
     // ブレーキ
     void Brake()
     {
-        if (CarController.isBrake && now_Speed > 0)
+        if (carController.isBrake && now_Speed > 0)
         {
-            now_Speed -= CarController.brake;
+            now_Speed -= carController.brake;
         }
     }
 
-    // ======================================================================================================================
+    //======================================================================================================================
     // 速度が最高速度を超えたり0を下回ったりしないよう修正
     void SpeedLimiter()
     {
@@ -95,16 +95,16 @@ public class BGScroll : MonoBehaviour
     // ボタン操作がなかったら自動で減速
     void Enginebrake()
     {
-        if (now_Speed > 0 && !CarController.isOperat)
+        if (now_Speed > 0 && !carController.isOperat)
         {
             now_Speed -= engine_brake;
         }
     }
 
-    // ======================================================================================================================
+    //======================================================================================================================
     // 背景を上下に動かす
     void MoveBG()
     {
-        transform.Translate(0, now_Speed * CarController.forward_or_back, 0);
+        transform.Translate(0, now_Speed * carController.forward_or_back, 0);
     }
 }

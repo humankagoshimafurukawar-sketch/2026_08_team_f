@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
-  CarController: {fileID: 79649653}
+  carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
   down_Goal_Pos: -720
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesManager
   ObstaclesOBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
-  instantiate_Time: 10
+  instantiate_Time: 5
 --- !u!4 &402241924
 Transform:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 402241922}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549, y: 234, z: 0}
+  m_LocalPosition: {x: 644, y: 234, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
-  CarController: {fileID: 79649653}
+  carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
   down_Goal_Pos: -720
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
-  CarController: {fileID: 79649653}
+  carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
   down_Goal_Pos: -720
@@ -954,8 +954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8067b0907c85cb947bf591f9a9f05ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarLateralMover
-  CarController: {fileID: 79649653}
-  screen_Size_x: 1280
+  gameController: {fileID: 1501033832}
+  carController: {fileID: 79649653}
 --- !u!1 &1501033831
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1e3295e0a4cc43ae26bb218d4588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  screen_Size_x: 1280
 --- !u!4 &1501033833
 Transform:
   m_ObjectHideFlags: 0
