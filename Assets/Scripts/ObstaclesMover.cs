@@ -5,15 +5,8 @@ public class ObstaclesMover : MonoBehaviour
     GameObject gameController;
     GameController gameController_Script;
 
-    //------------------------------------------------------------------------------------------------------------------
-    GameObject bg_dummy_Center;
-    BGScroll bgScroll_Script;
+    Transform BG_OBJ;
 
-    //------------------------------------------------------------------------------------------------------------------
-    GameObject carController;
-    CarController carController_Script;
-
-    //------------------------------------------------------------------------------------------------------------------
     [SerializeField] float move_amount = 0;
 
     //======================================================================================================================
@@ -24,28 +17,36 @@ public class ObstaclesMover : MonoBehaviour
 
         // GameControllerが持っているスクリプトを取得
         gameController_Script = gameController.GetComponent<GameController>();
-
-        //------------------------------------------------------------------------------------------------------------------
-        bg_dummy_Center = GameObject.Find("bg_dummy_Center");
-        bgScroll_Script = bg_dummy_Center.GetComponent<BGScroll>();
-
-        //------------------------------------------------------------------------------------------------------------------
-        carController = GameObject.Find("CarController");
-        carController_Script = carController.GetComponent<CarController>();
     }
 
     //======================================================================================================================
     void Update()
     {
-        float movement_Range = gameController_Script.screen_Size_x / 2.0f;
+        transform.Translate( -move_amount, 0, 0 );
 
-        transform.Translate
-            (
-            -move_amount, // x軸移動量
-            bgScroll_Script.now_Speed * carController_Script.forward_or_back,  // y軸移動量
-            0 // z軸移動量
-            );
+        // 画面外に出たら削除
+        float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
 
-        if (transform.position.x < -movement_Range) { Destroy(this.gameObject); }
+        if (transform.position.x < -movement_Range_x) { Destroy(this.gameObject); }
+        if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
+        { Destroy(this.gameObject); }
+    }
+
+    //======================================================================================================================
+    // コライダーに何かぶつかったときの動き
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 背景の座標を取得して、y軸移動を背景と連動
+        if (collision.gameObject.CompareTag("BG"))
+        {
+            BG_OBJ = collision.transform;
+            transform.parent = BG_OBJ;
+        }
+
+        // 車とぶつかったら削除
+        if (collision.gameObject.CompareTag("Car"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
