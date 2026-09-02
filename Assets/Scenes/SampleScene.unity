@@ -151,7 +151,7 @@ MonoBehaviour:
   forward_or_back: 0
   isOperat: 0
   accel: 10
-  brake: 3
+  brake: 1.5
   isAccel: 0
   isBrake: 0
   right_or_left: 0
@@ -358,8 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c727317ead94f41be6e5218295a751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesManager
-  ObstaclesOBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
-  instantiate_Time: 3
+  Obstacles00OBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
+  Obstacles01OBJ: {fileID: 8956232617805029629, guid: 8d20ff3c9327b304f90e62ba2e1f2f6f, type: 3}
+  instantiate_Time_00: 3
+  instantiate_Time_01: 5
 --- !u!4 &402241924
 Transform:
   m_ObjectHideFlags: 0
@@ -369,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 402241922}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 315, y: 332.9, z: 0}
+  m_LocalPosition: {x: 315, y: 362, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
