@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2759701992494972897}
   - component: {fileID: 6811228774217134714}
   m_Layer: 0
-  m_Name: Obstacles_dummy _1
+  m_Name: Obstacles_dummy_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4773862738683310272, guid: 8dda6757114de5449b6ac8e452b5434c, type: 3}
-  m_Color: {r: 0, g: 0.5999999, b: 0.25070307, a: 1}
+  m_Color: {r: 0.04995179, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
