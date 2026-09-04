@@ -37,8 +37,6 @@ public class ObstaclesMover02 : MonoBehaviour
 
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }
-
-        Debug.Log(distance);
     }
 
     //======================================================================================================================

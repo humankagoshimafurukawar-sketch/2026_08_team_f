@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 
     public float screen_Size_y = 720;
 
+    public float timer = 0;
+
     //======================================================================================================================
     void Start()
     {
@@ -17,6 +19,6 @@ public class GameController : MonoBehaviour
     //======================================================================================================================
     void Update()
     {
-        
+        timer += Time.deltaTime;
     }
 }
