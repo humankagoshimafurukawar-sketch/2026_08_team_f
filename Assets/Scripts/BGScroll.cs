@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BGScroll : MonoBehaviour
 {
+    [SerializeField] GameController gameController;
     [SerializeField] CarController carController;
 
     [SerializeField] float bg_Size_y = 720;
@@ -95,9 +96,16 @@ public class BGScroll : MonoBehaviour
     // ボタン操作がなかったら自動で減速
     void Enginebrake()
     {
+        // ボタン操作がなかったら少しずつ自動で減速
         if (now_Speed > 0 && !carController.isOperat)
         {
             now_Speed -= engine_brake;
+        }
+
+        // 目的地に到着したら大幅減速
+        if(now_Speed > 0 && !gameController.isPlaying)
+        {
+            now_Speed -= carController.brake;
         }
     }
 

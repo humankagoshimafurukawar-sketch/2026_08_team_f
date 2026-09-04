@@ -30,6 +30,13 @@ public class GameController : MonoBehaviour
     [Header("スコア")]
     public float score = 100;
 
+    [Header("道交法違反時にスコアからどれくらい減算するか")]
+    public float kashitsu_Unten_Chishi = 10;
+
+
+    // 経過時間→スコアへの換算を行ったかどうか
+    bool isToScore = false;
+
     //======================================================================================================================
     void Start()
     {
@@ -48,14 +55,22 @@ public class GameController : MonoBehaviour
         // 残り距離の算出
         Distance();
 
+        // 目的地に着いたらゲームプレイ中フラグをfalseに
+        if (remaining_distance <= 0)
+        {
+            isPlaying = false;
+        }
+
         // スコア換算
         Score();
+
+        Debug.Log(score);
     }
 
     //======================================================================================================================
     void Timer()
     {
-        if (remaining_distance > 0)
+        if (isPlaying)
         { timer += Time.deltaTime; }
     }
 
@@ -83,16 +98,19 @@ public class GameController : MonoBehaviour
         if (remaining_distance < 0)
         {
             remaining_distance = 0;
-            isPlaying = false;
         }
     }
 
     //======================================================================================================================
     void Score()
     {
-        if(isPlaying)
+
+        // 目的地到着までに経過した時間をスコアに変換して加算
+        if (!isPlaying && !isToScore)
         {
-            score += timer;
+            isToScore = true;
+            score += (score / timer) * 100;
         }
+
     }
 }

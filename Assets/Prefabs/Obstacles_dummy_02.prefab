@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95804808b4277a04eaad580ac2283725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesMover02
-  tracking_Distance: 600
+  tracking_Distance: 500
 --- !u!61 &2759701992494972897
 BoxCollider2D:
   m_ObjectHideFlags: 0

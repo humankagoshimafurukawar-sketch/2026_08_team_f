@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
+  gameController: {fileID: 1501033832}
   carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
@@ -846,6 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
+  gameController: {fileID: 1501033832}
   carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
@@ -1083,6 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d40772f1654c0469e808afb319b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGScroll
+  gameController: {fileID: 1501033832}
   carController: {fileID: 79649653}
   bg_Size_y: 720
   up_Goal_Pos: 720
@@ -1284,6 +1287,7 @@ GameObject:
   - component: {fileID: 1438966129}
   - component: {fileID: 1438966128}
   - component: {fileID: 1438966130}
+  - component: {fileID: 1438966133}
   - component: {fileID: 1438966131}
   - component: {fileID: 1438966132}
   m_Layer: 0
@@ -1454,6 +1458,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1438966133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438966127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262d019f26f05234680979cfab311a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoadkillManager
+  gameController: {fileID: 1501033832}
 --- !u!1 &1501033831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,6 +1507,8 @@ MonoBehaviour:
   distance_to_goal: 1
   timer: 0
   remaining_distance: 0
+  score: 100
+  kashitsu_Unten_Chishi: 10
 --- !u!4 &1501033833
 Transform:
   m_ObjectHideFlags: 0
