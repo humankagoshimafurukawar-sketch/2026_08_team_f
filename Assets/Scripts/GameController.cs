@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     public float screen_Size_y = 720;
 
-    //bool isPlaying;
+    public bool isPlaying = true;
 
     [Header("ゴールまでの距離(km)")]
     public float distance_to_goal = 0;
@@ -27,6 +27,9 @@ public class GameController : MonoBehaviour
     // 残りの距離算出に使用するタイマー
     float timer_for_remaining_distance = 0;
 
+    [Header("スコア")]
+    public float score = 100;
+
     //======================================================================================================================
     void Start()
     {
@@ -40,9 +43,25 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // 経過時間の計測
+        Timer();
+
+        // 残り距離の算出
+        Distance();
+
+        // スコア換算
+        Score();
+    }
+
+    //======================================================================================================================
+    void Timer()
+    {
         if (remaining_distance > 0)
         { timer += Time.deltaTime; }
+    }
 
+    //======================================================================================================================
+    void Distance()
+    {
         //------------------------------------------------------------------------------------------------------------------
         const float per_hour_to_per_second = 3600;
 
@@ -61,8 +80,19 @@ public class GameController : MonoBehaviour
         }
 
         // 残り距離が0を下回ったら強制的に0にする
-        if(remaining_distance < 0) { remaining_distance = 0; }
+        if (remaining_distance < 0)
+        {
+            remaining_distance = 0;
+            isPlaying = false;
+        }
+    }
 
-        Debug.Log(per_Second_Speed);
+    //======================================================================================================================
+    void Score()
+    {
+        if(isPlaying)
+        {
+            score += timer;
+        }
     }
 }

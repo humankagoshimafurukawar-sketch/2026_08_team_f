@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e72515d2d14d04789a074d92eb85fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
+  gameController: {fileID: 1501033832}
   forward_or_back: 0
   isOperat: 0
   accel: 5
@@ -358,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c727317ead94f41be6e5218295a751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesManager
+  gameController: {fileID: 1501033832}
   carController: {fileID: 79649653}
   bgScroll: {fileID: 156580350}
   Obstacles00OBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
@@ -1484,6 +1486,7 @@ MonoBehaviour:
   bgScroll: {fileID: 156580350}
   screen_Size_x: 1280
   screen_Size_y: 720
+  isPlaying: 1
   distance_to_goal: 1
   timer: 0
   remaining_distance: 0

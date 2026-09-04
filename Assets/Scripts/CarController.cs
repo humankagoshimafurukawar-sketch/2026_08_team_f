@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    [SerializeField] GameController gameController;
+
     [Header("前後移動関係")]
     // 前後判断用
     public int forward_or_back = 0;
@@ -35,7 +37,7 @@ public class CarController : MonoBehaviour
     void Update()
     {
         // 前後左右ボタン判定
-        if (Keyboard.current != null)
+        if (Keyboard.current != null && gameController.isPlaying)
         {
             // 前後
             if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
@@ -64,7 +66,7 @@ public class CarController : MonoBehaviour
         }
 
         // アクセル  前後どちらかのキーを押しながら、スペースキーを一回押すごとに加速
-        if (Keyboard.current != null)
+        if (Keyboard.current != null && gameController.isPlaying)
         {
             if (isOperat && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
@@ -74,7 +76,7 @@ public class CarController : MonoBehaviour
         }
 
         // ブレーキ  押し続けると減速
-        if (Keyboard.current != null)
+        if (Keyboard.current != null && gameController.isPlaying)
         {
             if (Keyboard.current.enterKey.isPressed)
             {
