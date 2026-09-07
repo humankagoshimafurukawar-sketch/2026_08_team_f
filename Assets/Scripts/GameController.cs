@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
 
 
     // 経過時間→スコアへの換算を行ったかどうか
-    bool isToScore = false;
+   bool isToScore = false;
 
     //======================================================================================================================
     void Start()
@@ -63,8 +63,6 @@ public class GameController : MonoBehaviour
 
         // スコア換算
         Score();
-
-        Debug.Log(score);
     }
 
     //======================================================================================================================
@@ -102,15 +100,15 @@ public class GameController : MonoBehaviour
     }
 
     //======================================================================================================================
-    void Score()
+    public bool Score()
     {
-
         // 目的地到着までに経過した時間をスコアに変換して加算
         if (!isPlaying && !isToScore)
         {
             isToScore = true;
             score += (score / timer) * 100;
+            return isToScore;
         }
-
+        else { return false; }
     }
 }

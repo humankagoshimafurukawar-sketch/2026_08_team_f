@@ -26,7 +26,8 @@ public class TextManager : MonoBehaviour
 
         timer_Text.text = $"{min:00}:{sec:00}";
 
+        const float km_to_m = 1000.0f;
         // 残りの距離を表示
-        distance_Text.text = gameController.remaining_distance.ToString("F1") + ("km");
+        distance_Text.text = (gameController.remaining_distance * km_to_m).ToString("F1") + ("m");
     }
 }
