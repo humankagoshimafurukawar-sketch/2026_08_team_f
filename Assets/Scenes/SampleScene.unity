@@ -361,14 +361,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesManager
   gameController: {fileID: 1501033832}
-  carController: {fileID: 79649653}
-  bgScroll: {fileID: 156580350}
-  Obstacles00OBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
-  Obstacles01OBJ: {fileID: 8956232617805029629, guid: 8d20ff3c9327b304f90e62ba2e1f2f6f, type: 3}
-  Obstacles02OBJ: {fileID: 8956232617805029629, guid: 3d7b77b7af7ce3347ae95bdce0415175, type: 3}
-  instantiate_Time_00: 3
-  instantiate_Time_01: 5
-  instantiate_Time_02: 7
+  Obstacles01OBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
+  Obstacles02OBJ: {fileID: 8956232617805029629, guid: 8d20ff3c9327b304f90e62ba2e1f2f6f, type: 3}
+  Obstacles03OBJ: {fileID: 8956232617805029629, guid: 3d7b77b7af7ce3347ae95bdce0415175, type: 3}
+  interval_Limit: 0.5
 --- !u!4 &402241924
 Transform:
   m_ObjectHideFlags: 0
@@ -1471,6 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoadkillManager
   gameController: {fileID: 1501033832}
+  isRoadkilling: 0
 --- !u!1 &1501033831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1e3295e0a4cc43ae26bb218d4588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  carController: {fileID: 79649653}
   bgScroll: {fileID: 156580350}
+  roadkillManager: {fileID: 1438966133}
+  roadSystemManager: {fileID: 1801555559}
   screen_Size_x: 1280
   screen_Size_y: 720
   isPlaying: 1
@@ -1510,6 +1510,8 @@ MonoBehaviour:
   remaining_distance: 0
   score: 100
   kashitsu_Unten_Chishi: 10
+  shingo_Mushi: 5
+  speed_Ihan: 5
 --- !u!4 &1501033833
 Transform:
   m_ObjectHideFlags: 0
@@ -1709,6 +1711,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776754643}
   m_CullTransparentMesh: 1
+--- !u!1 &1801555558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801555560}
+  - component: {fileID: 1801555559}
+  m_Layer: 0
+  m_Name: RoadSystemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801555559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801555558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f2ab016f3e3c94b9e05bb608430ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoadSystemManager
+  gameController: {fileID: 1501033832}
+  signal_Color: 1
+  red_Signal_Interval: 7
+  red_Signal_Time: 7
+  isBe_Stop: 0
+  speed_limit: 60
+  speed_limit_time: 10
+--- !u!4 &1801555560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801555558}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -45.06537, y: 177.05916, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890943772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1997,7 @@ SceneRoots:
   - {fileID: 2064455456}
   - {fileID: 1501033833}
   - {fileID: 402241924}
+  - {fileID: 1801555560}
   - {fileID: 79649654}
   - {fileID: 1570753865}
   - {fileID: 1438966129}

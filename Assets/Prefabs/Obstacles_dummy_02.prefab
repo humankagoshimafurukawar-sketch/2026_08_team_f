@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2294782838343295168}
   - component: {fileID: 7425403722883506060}
-  - component: {fileID: 1375946760624454769}
+  - component: {fileID: 8519885046052399782}
   - component: {fileID: 2759701992494972897}
   - component: {fileID: 6811228774217134714}
   m_Layer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4773862738683310272, guid: 8dda6757114de5449b6ac8e452b5434c, type: 3}
-  m_Color: {r: 0.48550066, g: 0.7207546, b: 0.014959042, a: 1}
+  m_Color: {r: 0.04995179, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1375946760624454769
+--- !u!114 &8519885046052399782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,10 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8956232617805029629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95804808b4277a04eaad580ac2283725, type: 3}
+  m_Script: {fileID: 11500000, guid: adfbc2905079af940ab1d766b0341e84, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstaclesMover02
-  tracking_Distance: 500
+  m_EditorClassIdentifier: Assembly-CSharp::ObstaclesMover01
+  move_amount: 20
 --- !u!61 &2759701992494972897
 BoxCollider2D:
   m_ObjectHideFlags: 0

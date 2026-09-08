@@ -4,6 +4,8 @@ public class RoadkillManager : MonoBehaviour
 {
     [SerializeField] GameController gameController;
 
+    public bool isRoadkilling = false;
+
     //======================================================================================================================
     void Start()
     {
@@ -20,10 +22,10 @@ public class RoadkillManager : MonoBehaviour
     // コライダーに何かぶつかったときの動き
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 人をひき殺したらスコアから減算
+        // 人をひき殺したら轢殺フラグを立てる
         if (collision.gameObject.CompareTag("Obstacles"))
         {
-            gameController.score -= gameController.kashitsu_Unten_Chishi;
+            isRoadkilling = true;
         }
     }
 }
