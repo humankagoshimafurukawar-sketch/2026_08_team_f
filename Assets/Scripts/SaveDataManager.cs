@@ -21,8 +21,6 @@ public class SaveDataManager : MonoBehaviour
         {
             SetSaveData();
         }
-
-        //Debug.Log(isSetSaveData);
     }
 
     //======================================================================================================================
@@ -33,7 +31,7 @@ public class SaveDataManager : MonoBehaviour
         PlayerPrefs.SetFloat("TIME", gameController.timer);
         PlayerPrefs.Save();
 
-        // キー名BEST SCOREに保存されている値を呼び出す, BEST SCOREがなければ0を呼び出す
+        // キー名BEST_SCOREに保存されている値を呼び出す, BEST_SCOREがなければ0を呼び出す
         float best_Score = PlayerPrefs.GetFloat("BEST_SCORE", 0);
 
         if (gameController.score > best_Score)
@@ -42,6 +40,7 @@ public class SaveDataManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        // キー名BEST_TIMEに保存されている値を呼び出す, BEST_TIMEがなければ0を呼び出す
         float best_Time = PlayerPrefs.GetFloat("BEST_TIME", 0);
 
         if (gameController.timer < best_Time)
