@@ -4,7 +4,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] CarController carController;
     [SerializeField] BGScroll bgScroll;
-    [SerializeField] RoadkillManager roadkillManager;
+    [SerializeField] CrimeManager crimeManager;
     [SerializeField] RoadSystemManager roadSystemManager;
 
     //----------------------------------------------------------------------------------------------------------------------
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     //----------------------------------------------------------------------------------------------------------------------
     [Header("道交法違反時にスコアからどれくらい減点するか")]
     [SerializeField] float kashitsu_Unten_Chishi = 10;
+    [SerializeField] float kashitsu_Chishi_Sho = 20;
     [SerializeField] float shingo_Mushi = 5;
     [SerializeField] float speed_Ihan = 5;
     // 信号無視中の経過時間
@@ -84,9 +85,12 @@ public class GameController : MonoBehaviour
 
         // スコア管理
         Score();
+
+        //Debug.Log(score);
     }
 
     //======================================================================================================================
+    // 走行中か否かを返す
     public bool IsRun()
     {
         // 走行中か否か
@@ -97,6 +101,7 @@ public class GameController : MonoBehaviour
     }
 
     //======================================================================================================================
+    // 経過時間を計測
     void Timer()
     {
         if (isPlaying)
@@ -104,6 +109,7 @@ public class GameController : MonoBehaviour
     }
 
     //======================================================================================================================
+    // 残りの距離を計測
     void Distance()
     {
         //------------------------------------------------------------------------------------------------------------------
@@ -131,14 +137,23 @@ public class GameController : MonoBehaviour
     }
 
     //======================================================================================================================
+    // スコア管理
     public void Score()
     {
         //------------------------------------------------------------------------------------------------------------------
-        //障害物轢殺時
-        if (roadkillManager.isRoadkilling)
+        // 障害物轢殺時
+        if (crimeManager.isRoadkilling)
         {
             score -= kashitsu_Unten_Chishi;
-            roadkillManager.isRoadkilling = false;
+            crimeManager.isRoadkilling = false;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------
+        // 対向車破壊時
+        if (crimeManager.isClash)
+        {
+            score -= kashitsu_Chishi_Sho;
+            crimeManager.isClash = false;
         }
 
         //------------------------------------------------------------------------------------------------------------------

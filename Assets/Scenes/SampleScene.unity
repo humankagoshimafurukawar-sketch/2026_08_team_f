@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   carController: {fileID: 79649653}
   bgScroll: {fileID: 156580350}
-  roadkillManager: {fileID: 1438966133}
+  crimeManager: {fileID: 1438966133}
   roadSystemManager: {fileID: 1801555559}
   screen_Size_x: 1280
   screen_Size_y: 720

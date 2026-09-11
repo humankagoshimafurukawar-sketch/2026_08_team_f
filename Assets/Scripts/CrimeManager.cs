@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class RoadkillManager : MonoBehaviour
+public class CrimeManager : MonoBehaviour
 {
     [SerializeField] GameController gameController;
 
     public bool isRoadkilling = false;
+
+    public bool isClash = false;
 
     //======================================================================================================================
     void Start()
@@ -26,6 +28,12 @@ public class RoadkillManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacles"))
         {
             isRoadkilling = true;
+        }
+
+        // 車と衝突したら衝突フラグを立てる
+        if (collision.gameObject.CompareTag("Car"))
+        {
+            isClash = true;
         }
     }
 }
