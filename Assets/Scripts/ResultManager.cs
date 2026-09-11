@@ -32,4 +32,11 @@ public class ResultManager : MonoBehaviour
     {
         SceneManager.LoadScene("ResultScene");
     }
+
+    //======================================================================================================================
+    // リザルトシーンからタイトルシーンへ戻る
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }

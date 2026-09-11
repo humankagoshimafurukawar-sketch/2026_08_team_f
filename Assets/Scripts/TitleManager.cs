@@ -5,7 +5,5 @@ public class TitleManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("MaineScene");
-
-        Debug.Log("すた");
     }
 }
