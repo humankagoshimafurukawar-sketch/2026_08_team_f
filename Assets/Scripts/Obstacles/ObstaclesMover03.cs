@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class ObstaclesMover02 : MonoBehaviour
+public class ObstaclesMover03 : MonoBehaviour
 {
     GameObject gameController;
     GameController gameController_Script;
 
     Transform BG_OBJ;
 
-    [SerializeField] float move_amount = 10;
+    Transform CarObJ_T;
 
-    // 障害物の進行方向
-    bool isLeft = true;
+    [Header("この距離に近づくまで車の左右移動を追尾")]
+    public float tracking_Distance = 5;
 
     //======================================================================================================================
     void Start()
@@ -20,20 +20,20 @@ public class ObstaclesMover02 : MonoBehaviour
 
         // GameControllerが持っているスクリプトを取得
         gameController_Script = gameController.GetComponent<GameController>();
+
+        // 指定したタグを持つオブジェクトを取得
+        CarObJ_T = GameObject.FindWithTag("Car").transform;
     }
 
     //======================================================================================================================
     void Update()
     {
-        float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
+        // 車とオブジェクトの距離
+        float distance = Vector3.Distance(CarObJ_T.transform.position, transform.position);
 
-        if (isLeft) { transform.Translate(-move_amount, 0, 0); }
-        if (!isLeft) { transform.Translate(move_amount, 0, 0); }
-
-        // 画面外に出たら進行方向を逆向きへ
-        if (isLeft && transform.position.x < -movement_Range_x || !isLeft && transform.position.x > movement_Range_x) 
-        { isLeft = !isLeft; }
-
+        // 一定の距離に近づくまで車の左右移動を追尾
+        if (distance >= tracking_Distance) 
+        { transform.position = new Vector3(CarObJ_T.transform.position.x, transform.position.y, transform.position.z); }
 
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }

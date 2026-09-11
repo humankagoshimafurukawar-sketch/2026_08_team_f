@@ -364,7 +364,9 @@ MonoBehaviour:
   Obstacles01OBJ: {fileID: 8956232617805029629, guid: 41d361afa90fcda4a8d124840bb7d014, type: 3}
   Obstacles02OBJ: {fileID: 8956232617805029629, guid: 8d20ff3c9327b304f90e62ba2e1f2f6f, type: 3}
   Obstacles03OBJ: {fileID: 8956232617805029629, guid: 3d7b77b7af7ce3347ae95bdce0415175, type: 3}
+  E_CarOBJ: {fileID: 3066655477284171728, guid: 2bbb5715b43e6ba479ad711d86382ea5, type: 3}
   interval_Limit: 0.5
+  e_Car_Go_Time: 5
 --- !u!4 &402241924
 Transform:
   m_ObjectHideFlags: 0
