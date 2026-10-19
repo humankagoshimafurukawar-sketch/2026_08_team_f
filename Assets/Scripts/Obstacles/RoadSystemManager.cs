@@ -3,6 +3,13 @@ using UnityEngine;
 public class RoadSystemManager : MonoBehaviour
 {
     [SerializeField] GameController gameController;
+
+    [Header("信号のアニメコントローラー")]
+    [SerializeField] Animator signal_Anim;
+
+    [Header("速度標識のアニメコントローラー")]
+    [SerializeField] Animator speed_Limit_Anim;
+
     //[SerializeField] CarController carController;
     //[SerializeField] BGScroll bgScroll;
 
@@ -33,7 +40,11 @@ public class RoadSystemManager : MonoBehaviour
     public int speed_limit = legal_speed;
 
     // 速度制限開始用タイマー
-    float speed_limit_Interval = 0;
+    float speed_limit_Start_Counter = 0;
+
+
+    [Header("何秒おきに速度制限の抽選を行うか")]
+    [SerializeField] float speed_limit_Interval = 0;
 
     [Header("速度制限をかけられる時間の上限(秒)")]
     [SerializeField] float speed_limit_time = 10;
@@ -69,10 +80,11 @@ public class RoadSystemManager : MonoBehaviour
         // 赤信号にするまでの時間を計測
         if(signal_Color != 3) { signal_Counter += Time.deltaTime; }
 
-        // 信号を黄色にする
+        // 信号が赤になる3秒前に信号を黄色にする
         if (signal_Counter >= (red_Signal_Interval - 3.0f))
         {
             signal_Color = 2;
+            signal_Anim.SetInteger("signal_Color", signal_Color);
             isBe_Stop = true;
         }
 
@@ -81,6 +93,7 @@ public class RoadSystemManager : MonoBehaviour
         {
             signal_Counter = 0;
             signal_Color = 3;
+            signal_Anim.SetInteger("signal_Color", signal_Color);
             isBe_Stop = true;
         }
 
@@ -93,10 +106,12 @@ public class RoadSystemManager : MonoBehaviour
             if (red_Signal_Counter >= red_Signal_Time)
             {
                 red_Signal_Counter = 0;
-                signal_Color = 0;
+                signal_Color = 1;
+                signal_Anim.SetInteger("signal_Color", signal_Color);
                 isBe_Stop = false;
             }
         }
+
     }
 
     //======================================================================================================================
@@ -105,14 +120,16 @@ public class RoadSystemManager : MonoBehaviour
     {
         // 速度制限開始までの時間をカウント
         if (gameController.IsRun() && speed_limit >= legal_speed) 
-        { speed_limit_Interval += Time.deltaTime; }
+        { speed_limit_Start_Counter += Time.deltaTime; }
 
         // 30秒ごとに速度制限をかける
-        if (gameController.IsRun() && speed_limit_Interval >= 30)
+        if (gameController.IsRun() && speed_limit_Start_Counter >= speed_limit_Interval)
         {
-            speed_limit_Interval = 0;
+            speed_limit_Start_Counter = 0;
             // 30km/h ～ 50km/hまでの速度制限のうち一つをランダムにかける
             speed_limit = Random.Range(3, 6) * 10;
+            
+            speed_Limit_Anim.SetInteger("speed_limit", speed_limit);
         }
 
         // 速度制限がかかっている場合
@@ -126,6 +143,7 @@ public class RoadSystemManager : MonoBehaviour
             {
                 speed_limit_Counter = 0;
                 speed_limit = legal_speed;
+                speed_Limit_Anim.SetInteger("speed_limit", speed_limit);
             }
         }
     }
