@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 856035642}
   - component: {fileID: 856035641}
   m_Layer: 5
-  m_Name: Obs_Back_Button
+  m_Name: Disp_Back_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3340,7 +3340,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5168\u54E1\u3072\u3044\u305F\u308C\u3084\uFF5E"
+  m_text: "\u81EA\u5206\u3067\u8003\u3048\u308D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 709a9aaf1a08c6f42a9d3da4e6d1bc19, type: 2}
   m_sharedMaterial: {fileID: 5034640227313048701, guid: 709a9aaf1a08c6f42a9d3da4e6d1bc19, type: 2}

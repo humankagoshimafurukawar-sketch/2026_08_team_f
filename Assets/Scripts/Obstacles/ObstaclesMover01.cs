@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class ObstaclesMover01 : MonoBehaviour
 {
@@ -22,14 +23,18 @@ public class ObstaclesMover01 : MonoBehaviour
     //======================================================================================================================
     void Update()
     {
-        transform.Translate( -move_amount, 0, 0 );
-
         // 画面外に出たら削除
         float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
 
         if (transform.position.x < -movement_Range_x) { Destroy(this.gameObject); }
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }
+    }
+
+    //======================================================================================================================
+    void FixedUpdate()
+    {
+        transform.Translate(-move_amount, 0, 0);
     }
 
     //======================================================================================================================

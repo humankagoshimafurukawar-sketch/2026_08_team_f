@@ -28,15 +28,19 @@ public class ObstaclesMover03 : MonoBehaviour
     //======================================================================================================================
     void Update()
     {
+        if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
+        { Destroy(this.gameObject); }
+    }
+
+    //======================================================================================================================
+    void FixedUpdate()
+    {
         // 車とオブジェクトの距離
         float distance = Vector3.Distance(CarObJ_T.transform.position, transform.position);
 
         // 一定の距離に近づくまで車の左右移動を追尾
         if (distance >= tracking_Distance) 
         { transform.position = new Vector3(CarObJ_T.transform.position.x, transform.position.y, transform.position.z); }
-
-        if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
-        { Destroy(this.gameObject); }
     }
 
     //======================================================================================================================

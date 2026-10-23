@@ -4,6 +4,8 @@ public class RoadSystemManager : MonoBehaviour
 {
     [SerializeField] GameController gameController;
 
+    [SerializeField] SoundManager soundManager_Script;
+
     [Header("信号のアニメコントローラー")]
     [SerializeField] Animator signal_Anim;
 
@@ -31,6 +33,8 @@ public class RoadSystemManager : MonoBehaviour
 
     [Header("現在赤信号、または黄信号か")]
     public bool isBe_Stop = false;
+
+    bool expYellow = false;
 
     //----------------------------------------------------------------------------------------------------------------------
     // 通常時の法定速度
@@ -81,11 +85,13 @@ public class RoadSystemManager : MonoBehaviour
         if(signal_Color != 3) { signal_Counter += Time.deltaTime; }
 
         // 信号が赤になる3秒前に信号を黄色にする
-        if (signal_Counter >= (red_Signal_Interval - 3.0f))
+        if (signal_Counter >= (red_Signal_Interval - 3.0f) && !expYellow)
         {
             signal_Color = 2;
             signal_Anim.SetInteger("signal_Color", signal_Color);
+            soundManager_Script.PlaySE(soundManager_Script.se_Change);
             isBe_Stop = true;
+            expYellow = true;
         }
 
         // 信号を赤にする
@@ -94,6 +100,7 @@ public class RoadSystemManager : MonoBehaviour
             signal_Counter = 0;
             signal_Color = 3;
             signal_Anim.SetInteger("signal_Color", signal_Color);
+            soundManager_Script.PlaySE(soundManager_Script.se_Change);
             isBe_Stop = true;
         }
 
@@ -109,6 +116,7 @@ public class RoadSystemManager : MonoBehaviour
                 signal_Color = 1;
                 signal_Anim.SetInteger("signal_Color", signal_Color);
                 isBe_Stop = false;
+                expYellow = false;
             }
         }
 
@@ -128,7 +136,9 @@ public class RoadSystemManager : MonoBehaviour
             speed_limit_Start_Counter = 0;
             // 30km/h ～ 50km/hまでの速度制限のうち一つをランダムにかける
             speed_limit = Random.Range(3, 6) * 10;
-            
+
+            soundManager_Script.PlaySE(soundManager_Script.se_Change);
+
             speed_Limit_Anim.SetInteger("speed_limit", speed_limit);
         }
 
@@ -144,6 +154,7 @@ public class RoadSystemManager : MonoBehaviour
                 speed_limit_Counter = 0;
                 speed_limit = legal_speed;
                 speed_Limit_Anim.SetInteger("speed_limit", speed_limit);
+                soundManager_Script.PlaySE(soundManager_Script.se_Change);
             }
         }
     }

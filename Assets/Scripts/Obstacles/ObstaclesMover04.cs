@@ -24,6 +24,10 @@ public class ObstaclesMover04 : MonoBehaviour
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }
 
+    }
+
+    void FixedUpdate()
+    {
         transform.Translate(0, -move_amount, 0);
     }
 

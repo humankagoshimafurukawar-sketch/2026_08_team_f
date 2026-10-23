@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class GameController : MonoBehaviour
 {
@@ -42,10 +43,11 @@ public class GameController : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------------------------
     [Header("道交法違反時にスコアからどれくらい減点するか")]
-    [SerializeField] float kashitsu_Unten_Chishi = 10;
-    [SerializeField] float kashitsu_Chishi_Sho = 20;
+    [SerializeField] float kashitsu_Unten_Chishi = 100;
+    [SerializeField] float kashitsu_Chishi_Sho = 150;
     [SerializeField] float shingo_Mushi = 5;
     [SerializeField] float speed_Ihan = 5;
+
     // 信号無視中の経過時間
     float shingo_Mushi_Counter = 0;
 
@@ -186,6 +188,9 @@ public class GameController : MonoBehaviour
                     score -= shingo_Mushi + (shingo_Mushi / 3);
                 }
             }
+
+            // スコアの下限を制限
+            Mathf.Clamp(score, 999f, -999f);
         }
 
         //------------------------------------------------------------------------------------------------------------------

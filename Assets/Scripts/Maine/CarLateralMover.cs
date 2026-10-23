@@ -22,7 +22,11 @@ public class CarLateralMover : MonoBehaviour
 
         if (transform.position.x <= -movement_Range) 
         { transform.position = new Vector3(-movement_Range, transform.position.y, transform.position.z); }
+    }
 
+    //======================================================================================================================
+    void FixedUpdate()
+    {
         // 移動量の分だけ車本体を右か左に動かす
         transform.Translate(carController.lateral_Move_Amount * carController.right_or_left, 0, 0);
     }

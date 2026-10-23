@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class ObstaclesMover02 : MonoBehaviour
 {
@@ -25,18 +26,22 @@ public class ObstaclesMover02 : MonoBehaviour
     //======================================================================================================================
     void Update()
     {
+        if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
+        { Destroy(this.gameObject); }
+    }
+
+    //======================================================================================================================
+    void FixedUpdate()
+    {
         float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
 
         if (isLeft) { transform.Translate(-move_amount, 0, 0); }
         if (!isLeft) { transform.Translate(move_amount, 0, 0); }
 
         // 画面外に出たら進行方向を逆向きへ
-        if (isLeft && transform.position.x < -movement_Range_x || !isLeft && transform.position.x > movement_Range_x) 
+        if (isLeft && transform.position.x < -movement_Range_x || !isLeft && transform.position.x > movement_Range_x)
         { isLeft = !isLeft; }
 
-
-        if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
-        { Destroy(this.gameObject); }
     }
 
     //======================================================================================================================
