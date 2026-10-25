@@ -96,7 +96,7 @@ public class GameController : MonoBehaviour
     public bool IsRun()
     {
         // 走行中か否か
-        if (bgScroll.now_Speed >= carController.accel) { isRun = true; }
+        if (bgScroll.now_Speed >= 1.0f) { isRun = true; }
         else { isRun = false; }
 
         return isRun;

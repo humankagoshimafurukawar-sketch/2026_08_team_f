@@ -17,10 +17,12 @@ public class SaveDataManager : MonoBehaviour
     void Update()
     {
         // プレイが終了し、経過時間がスコアに換算されたらスコアを記録
-        if (!gameController.isPlaying && gameController.isToScore)
+        if (!gameController.isPlaying && gameController.isToScore && !isSetSaveData)
         {
             SetSaveData();
         }
+
+        Debug.Log(PlayerPrefs.GetFloat("BEST_TIME", 0.0f));
     }
 
     //======================================================================================================================
@@ -31,8 +33,10 @@ public class SaveDataManager : MonoBehaviour
         PlayerPrefs.SetFloat("SCORE", gameController.score);
         PlayerPrefs.Save();
 
+
+
         // キー名BEST_TIMEに保存されている値を呼び出す, BEST_TIMEがなければ0を呼び出す
-        float best_Time = PlayerPrefs.GetFloat("BEST_TIME", 0);
+        float best_Time = PlayerPrefs.GetFloat("BEST_TIME", 0.0f);
 
         if (gameController.timer < best_Time)
         {
@@ -41,7 +45,7 @@ public class SaveDataManager : MonoBehaviour
         }
 
         // キー名BEST_SCOREに保存されている値を呼び出す, BEST_SCOREがなければ0を呼び出す
-        float best_Score = PlayerPrefs.GetFloat("BEST_SCORE", 0);
+        float best_Score = PlayerPrefs.GetFloat("BEST_SCORE", -9999f);
 
         if (gameController.score > best_Score)
         {

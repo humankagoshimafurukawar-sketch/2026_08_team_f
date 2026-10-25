@@ -39,12 +39,12 @@ public class ResultManager : MonoBehaviour
         //------------------------------------------------------------------------------------------------------------------
         // ベスト記録表示
         best_time = PlayerPrefs.GetFloat("BEST_TIME", 0.0f);
-        best_score = PlayerPrefs.GetFloat("BEST_SCORE", 0.0f);
+        best_score = PlayerPrefs.GetFloat("BEST_SCORE", -9999f);
 
         int best_min = Mathf.FloorToInt(best_time / 60f);
         int best_sec = Mathf.FloorToInt(best_time % 60f);
 
-        bestTimeText.text = "最速走行時間 : " + $"{min:00}:{sec:00}";
+        bestTimeText.text = "最速走行時間 : " + $"{best_min:00}:{best_sec:00}";
         bestScoreText.text = "最高得点 : " + best_score.ToString("F0") + "点";
 
         //------------------------------------------------------------------------------------------------------------------
