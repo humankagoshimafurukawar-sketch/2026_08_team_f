@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class ObstaclesMover04 : MonoBehaviour
 {
+    [SerializeField] Animator obsCAnim;
+
     GameObject gameController;
     GameController gameController_Script;
 
     [Header("下方向への移動量")]
     [SerializeField] float move_amount = 7;
+
+    bool isExplosion = false;
 
     //======================================================================================================================
     void Start()
@@ -24,6 +28,8 @@ public class ObstaclesMover04 : MonoBehaviour
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }
 
+        obsCAnim.SetBool("isExplosion", isExplosion);
+
     }
 
     void FixedUpdate()
@@ -38,7 +44,13 @@ public class ObstaclesMover04 : MonoBehaviour
         // 車とぶつかったら削除
         if (collision.gameObject.CompareTag("Car"))
         {
-            Destroy(this.gameObject);
+            isExplosion = true;
+
+            BoxCollider col;
+            col = this.gameObject.GetComponent<BoxCollider>();
+            Destroy(col);
+
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

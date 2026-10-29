@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1375946760624454769}
   - component: {fileID: 2759701992494972897}
   - component: {fileID: 6811228774217134714}
+  - component: {fileID: 8907688094943562645}
   m_Layer: 0
   m_Name: Obstacles_dummy_03
   m_TagString: Obstacles
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95804808b4277a04eaad580ac2283725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesMover02
+  obsHAnim: {fileID: 8907688094943562645}
   tracking_Distance: 900
 --- !u!61 &2759701992494972897
 BoxCollider2D:
@@ -180,3 +182,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &8907688094943562645
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956232617805029629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e37bcecc878708b4a8ee7a7dda22cb86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

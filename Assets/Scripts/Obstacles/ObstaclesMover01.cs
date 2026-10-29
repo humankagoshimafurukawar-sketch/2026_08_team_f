@@ -3,12 +3,16 @@ using UnityEngine.InputSystem.XR;
 
 public class ObstaclesMover01 : MonoBehaviour
 {
+    [SerializeField] Animator obsHAnim;
+
     GameObject gameController;
     GameController gameController_Script;
 
     Transform BG_OBJ;
 
     [SerializeField] float move_amount = 10;
+
+    bool isExplosion = false;
 
     //======================================================================================================================
     void Start()
@@ -29,6 +33,8 @@ public class ObstaclesMover01 : MonoBehaviour
         if (transform.position.x < -movement_Range_x) { Destroy(this.gameObject); }
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
         { Destroy(this.gameObject); }
+
+        obsHAnim.SetBool("isExplosion", isExplosion);
     }
 
     //======================================================================================================================
@@ -51,7 +57,13 @@ public class ObstaclesMover01 : MonoBehaviour
         // 車とぶつかったら削除
         if (collision.gameObject.CompareTag("Car"))
         {
-            Destroy(this.gameObject);
+            isExplosion = true;
+
+            BoxCollider col;
+            col = this.gameObject.GetComponent<BoxCollider>();
+            Destroy(col);
+
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7390737622990975800}
   - component: {fileID: 2231515668796994879}
   - component: {fileID: 1353202655045509110}
+  - component: {fileID: 4201491284017143175}
   m_Layer: 0
   m_Name: E_Car_dummy
   m_TagString: Car
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 164013933
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7046360566201921721, guid: edce91e5531ef9142bc28efc5e486f4e, type: 3}
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b754ce6fc1e30d44ab75e52d43970cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclesMover03
+  obsCAnim: {fileID: 4201491284017143175}
   move_amount: 60
 --- !u!61 &2231515668796994879
 BoxCollider2D:
@@ -180,3 +182,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4201491284017143175
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066655477284171728}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e37bcecc878708b4a8ee7a7dda22cb86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
