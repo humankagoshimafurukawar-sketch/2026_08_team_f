@@ -42,13 +42,10 @@ public class ObstaclesMover04 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 車とぶつかったら削除
-        if (collision.gameObject.CompareTag("Car"))
+        if (!isExplosion && collision.gameObject.CompareTag("Car"))
         {
             isExplosion = true;
-
-            BoxCollider col;
-            col = this.gameObject.GetComponent<BoxCollider>();
-            Destroy(col);
+            obsCAnim.SetBool("isExplosion", isExplosion);
 
             Destroy(this.gameObject, 0.5f);
         }

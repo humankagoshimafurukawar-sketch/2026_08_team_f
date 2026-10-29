@@ -21,8 +21,6 @@ public class SaveDataManager : MonoBehaviour
         {
             SetSaveData();
         }
-
-        Debug.Log(PlayerPrefs.GetFloat("BEST_TIME", 0.0f));
     }
 
     //======================================================================================================================

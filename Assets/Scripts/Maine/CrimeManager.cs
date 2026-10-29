@@ -10,8 +10,7 @@ public class CrimeManager : MonoBehaviour
 
     public bool isClash = false;
 
-    AudioClip se_Explosion;
-
+    public bool isHodoGaHiroi = false;
     //======================================================================================================================
     void Start()
     {
@@ -41,5 +40,17 @@ public class CrimeManager : MonoBehaviour
             isClash = true;
             soundManager_Script.PlaySE(soundManager_Script.se_Explosion);
         }
+
+        // 通行帯違反
+        if (collision.gameObject.CompareTag("sidewalk"))
+        {
+            isHodoGaHiroi = true;
+        }
+        else if (collision.gameObject == null)
+        {
+            isHodoGaHiroi = false;
+        }
     }
+
+    //======================================================================================================================
 }

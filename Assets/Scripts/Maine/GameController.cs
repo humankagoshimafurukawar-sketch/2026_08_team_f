@@ -47,12 +47,16 @@ public class GameController : MonoBehaviour
     [SerializeField] float kashitsu_Chishi_Sho = 150;
     [SerializeField] float shingo_Mushi = 5;
     [SerializeField] float speed_Ihan = 5;
+    [SerializeField] float tsukotai_Iihan = 5;
 
     // 信号無視中の経過時間
     float shingo_Mushi_Counter = 0;
 
     // 速度制限中の経過時間
     float speed_Ihan_Counter = 0;
+
+    // 通行帯違反中の経過時間
+    float tsukotai_Iihan_Counter = 0;
 
     //----------------------------------------------------------------------------------------------------------------------
     // 車が現在走行中か否か
@@ -157,6 +161,20 @@ public class GameController : MonoBehaviour
             score -= kashitsu_Chishi_Sho;
             crimeManager.isClash = false;
         }
+
+        //------------------------------------------------------------------------------------------------------------------
+        // 歩道走行時
+        if (crimeManager.isHodoGaHiroi)
+        {
+            tsukotai_Iihan_Counter += Time.deltaTime;
+
+            if (tsukotai_Iihan_Counter >= 3)
+            {
+                tsukotai_Iihan_Counter = 0;
+                score -= tsukotai_Iihan;
+            }
+        }
+
 
         //------------------------------------------------------------------------------------------------------------------
         // 信号無視時

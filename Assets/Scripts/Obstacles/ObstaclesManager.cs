@@ -100,7 +100,7 @@ public class ObstaclesManager : MonoBehaviour
         {
             if (e_Car_Go_or_No == 1)
             {
-                Instantiate(E_CarOBJ, transform.position, transform.rotation);
+                Instantiate(E_CarOBJ, new Vector3(172, transform.position.y, transform.position.z), transform.rotation);
                 e_Car_Go_or_No = 0;
             }
         }
