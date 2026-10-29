@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
     [SerializeField] float shingo_Mushi = 5;
     [SerializeField] float speed_Ihan = 5;
     [SerializeField] float tsukotai_Iihan = 5;
+    [SerializeField] float gyakuso = 5;
 
     // 信号無視中の経過時間
     float shingo_Mushi_Counter = 0;
@@ -57,6 +58,9 @@ public class GameController : MonoBehaviour
 
     // 通行帯違反中の経過時間
     float tsukotai_Iihan_Counter = 0;
+
+    // 逆走時の経過時間
+    float gyakuso_Counter = 0;
 
     //----------------------------------------------------------------------------------------------------------------------
     // 車が現在走行中か否か
@@ -92,7 +96,7 @@ public class GameController : MonoBehaviour
         // スコア管理
         Score();
 
-        //Debug.Log(score);
+        Debug.Log(score);
     }
 
     //======================================================================================================================
@@ -172,6 +176,19 @@ public class GameController : MonoBehaviour
             {
                 tsukotai_Iihan_Counter = 0;
                 score -= tsukotai_Iihan;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------------------------
+        // 逆走時
+        if (crimeManager.isGyakuso)
+        {
+            gyakuso_Counter += Time.deltaTime;
+
+            if (gyakuso_Counter >= 3)
+            {
+                gyakuso_Counter = 0;
+                score -= gyakuso;
             }
         }
 

@@ -33,8 +33,8 @@ public class SaveDataManager : MonoBehaviour
 
 
 
-        // キー名BEST_TIMEに保存されている値を呼び出す, BEST_TIMEがなければ0を呼び出す
-        float best_Time = PlayerPrefs.GetFloat("BEST_TIME", 0.0f);
+        // キー名BEST_TIMEに保存されている値を呼び出す, BEST_TIMEがなければ9999を呼び出す
+        float best_Time = PlayerPrefs.GetFloat("BEST_TIME", 9999.0f);
 
         if (gameController.timer < best_Time)
         {

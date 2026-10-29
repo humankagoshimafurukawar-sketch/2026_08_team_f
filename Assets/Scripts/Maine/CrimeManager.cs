@@ -11,6 +11,9 @@ public class CrimeManager : MonoBehaviour
     public bool isClash = false;
 
     public bool isHodoGaHiroi = false;
+
+    public bool isGyakuso = false;
+
     //======================================================================================================================
     void Start()
     {
@@ -40,16 +43,28 @@ public class CrimeManager : MonoBehaviour
             isClash = true;
             soundManager_Script.PlaySE(soundManager_Script.se_Explosion);
         }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         // 通行帯違反
         if (collision.gameObject.CompareTag("sidewalk"))
-        {
-            isHodoGaHiroi = true;
-        }
-        else if (collision.gameObject == null)
-        {
-            isHodoGaHiroi = false;
-        }
+        { isHodoGaHiroi = true; }
+
+        // 逆走
+        if (collision.gameObject.CompareTag("OppositionLane"))
+        { isGyakuso = true; }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // 通行帯違反
+        if (collision.gameObject.CompareTag("sidewalk"))
+        { isHodoGaHiroi = false; }
+
+        // 逆走
+        if (collision.gameObject.CompareTag("OppositionLane"))
+        { isGyakuso = false; }
     }
 
     //======================================================================================================================

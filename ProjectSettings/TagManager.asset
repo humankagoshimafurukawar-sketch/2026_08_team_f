@@ -8,6 +8,7 @@ TagManager:
   - BG
   - Obstacles
   - sidewalk
+  - OppositionLane
   layers:
   - Default
   - TransparentFX
