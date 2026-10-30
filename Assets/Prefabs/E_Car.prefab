@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 1353202655045509110}
   - component: {fileID: 4201491284017143175}
   m_Layer: 0
-  m_Name: E_Car_dummy
-  m_TagString: Car
+  m_Name: E_Car
+  m_TagString: ECar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

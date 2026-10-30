@@ -38,7 +38,7 @@ public class CrimeManager : MonoBehaviour
         }
 
         // 車と衝突したら衝突フラグを立てる
-        if (collision.gameObject.CompareTag("Car"))
+        if (collision.gameObject.CompareTag("ECar"))
         {
             isClash = true;
             soundManager_Script.PlaySE(soundManager_Script.se_Explosion);

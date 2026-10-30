@@ -55,7 +55,7 @@ public class ObstaclesMover01 : MonoBehaviour
         }
 
         // 車とぶつかったら削除
-        if (!isExplosion && collision.gameObject.CompareTag("Car"))
+        if (!isExplosion && collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("ECar"))
         {
             isExplosion = true;
             obsHAnim.SetBool("isExplosion", isExplosion);

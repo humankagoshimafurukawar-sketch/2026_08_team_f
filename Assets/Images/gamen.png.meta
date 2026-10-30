@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 656d3a1d500f48e48bf6ccec99bf2379
+guid: 26f9aa4c6b1509447adc5f0361e02019
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2445870203819063848
-    second: kmh_0
+      213: 5999558483312904522
+    second: gamen_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kmh_0
+      name: gamen_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 392
-        height: 117
+        width: 1279
+        height: 718
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d507a622068e0ed0800000000000000
-      internalID: -2445870203819063848
+      spriteID: a490c0f47a6b24350800000000000000
+      internalID: 5999558483312904522
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kmh_0: -2445870203819063848
+      gamen_0: 5999558483312904522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
