@@ -42,8 +42,8 @@ public class GameController : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------------------------
     [Header("道交法違反時にスコアからどれくらい減点するか")]
-    [SerializeField] float kashitsu_Unten_Chishi = 100;
-    [SerializeField] float kashitsu_Chishi_Sho = 150;
+    [SerializeField] float kashitsu_Unten_Chishi_Sho = 100;
+    [SerializeField] float kiken_Unten_Chishi_Sho = 150;
     [SerializeField] float shingo_Mushi = 5;
     [SerializeField] float speed_Ihan = 5;
     [SerializeField] float tsukotai_Iihan = 5;
@@ -153,7 +153,7 @@ public class GameController : MonoBehaviour
         // 障害物轢殺時
         if (crimeManager.isRoadkilling)
         {
-            score -= kashitsu_Unten_Chishi;
+            score -= kashitsu_Unten_Chishi_Sho;
             crimeManager.isRoadkilling = false;
         }
 
@@ -161,7 +161,7 @@ public class GameController : MonoBehaviour
         // 対向車破壊時
         if (crimeManager.isClash)
         {
-            score -= kashitsu_Chishi_Sho;
+            score -= kiken_Unten_Chishi_Sho;
             crimeManager.isClash = false;
         }
 
