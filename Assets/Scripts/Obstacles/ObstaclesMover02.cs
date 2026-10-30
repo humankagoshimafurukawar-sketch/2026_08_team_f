@@ -39,7 +39,7 @@ public class ObstaclesMover02 : MonoBehaviour
     //======================================================================================================================
     void FixedUpdate()
     {
-        float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
+        const int movement_Range_x = 430;
 
         if (isLeft) { transform.Translate(-move_amount, 0, 0); }
         if (!isLeft) { transform.Translate(move_amount, 0, 0); }

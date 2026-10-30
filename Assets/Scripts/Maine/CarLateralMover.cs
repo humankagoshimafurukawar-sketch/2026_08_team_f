@@ -15,7 +15,7 @@ public class CarLateralMover : MonoBehaviour
     //======================================================================================================================
     void Update()
     {
-        float movement_Range = gameController.screen_Size_x / 2.0f;
+        const int movement_Range = 430;
 
         if (transform.position.x >=  movement_Range) 
         { transform.position = new Vector3(movement_Range, transform.position.y, transform.position.z); }

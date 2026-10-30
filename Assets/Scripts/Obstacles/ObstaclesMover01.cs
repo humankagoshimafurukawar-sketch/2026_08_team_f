@@ -28,7 +28,7 @@ public class ObstaclesMover01 : MonoBehaviour
     void Update()
     {
         // 画面外に出たら削除
-        float movement_Range_x = gameController_Script.screen_Size_x / 2.0f;
+        const int movement_Range_x = 430;
 
         if (transform.position.x < -movement_Range_x) { Destroy(this.gameObject); }
         if (transform.position.y > gameController_Script.screen_Size_y || transform.position.y < -gameController_Script.screen_Size_y)
