@@ -27,7 +27,7 @@ public class CarLateralMover : MonoBehaviour
     //======================================================================================================================
     void FixedUpdate()
     {
-        // 移動量の分だけ車本体を右か左に動かす
-        transform.Translate(carController.lateral_Move_Amount * carController.right_or_left, 0, 0);
+        // 横に移動させる
+        if (gameController.isPlaying) { transform.Translate(carController.lateral_Move_Amount * carController.right_or_left, 0, 0); }
     }
 }

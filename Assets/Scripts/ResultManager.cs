@@ -49,8 +49,8 @@ public class ResultManager : MonoBehaviour
 
         //------------------------------------------------------------------------------------------------------------------
         // ランク表示
-        if (score > rank_A_score) { rankText.text = "優良運転者"; }
-        else if (score > rank_B_score) { rankText.text = "免許停止"; }
+        if (score >= rank_A_score) { rankText.text = "優良運転者"; }
+        else if (score >= rank_B_score) { rankText.text = "免許停止"; }
         else { rankText.text = "今すぐ免許取り消し"; }
     }
 
