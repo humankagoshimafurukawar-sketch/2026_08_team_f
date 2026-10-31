@@ -38,8 +38,8 @@ public class ResultManager : MonoBehaviour
 
         //------------------------------------------------------------------------------------------------------------------
         // ベスト記録表示
-        best_time = PlayerPrefs.GetFloat("BEST_TIME", 600.0f);
-        best_score = PlayerPrefs.GetFloat("BEST_SCORE", -9999f);
+        best_time = PlayerPrefs.GetFloat("BEST_TIME", time);
+        best_score = PlayerPrefs.GetFloat("BEST_SCORE", score);
 
         int best_min = Mathf.FloorToInt(best_time / 60f);
         int best_sec = Mathf.FloorToInt(best_time % 60f);
