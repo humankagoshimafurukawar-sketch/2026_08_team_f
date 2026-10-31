@@ -42,7 +42,7 @@ public class SaveDataManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        // キー名BEST_SCOREに保存されている値を呼び出す, BEST_SCOREがなければ0を呼び出す
+        // キー名BEST_SCOREに保存されている値を呼び出す, BEST_SCOREがなければ-9999を呼び出す
         float best_Score = PlayerPrefs.GetFloat("BEST_SCORE", -9999f);
 
         if (gameController.score > best_Score)
